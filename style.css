@@ -1,0 +1,53 @@
+body{
+    padding: 0;
+    margin: 0%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -20;
+}
+
+.gameContainer{
+    background-color: aqua;
+    width: 100vmin;
+    height: 100vmin;
+    z-index: -10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.square{
+    width: 4vmin;
+    height: 4vmin;
+    background-color: rgb(255, 255, 255);
+    outline: solid black 1px;
+}
+.row{
+    display: flex;
+}
+.green{
+    background-color: greenyellow;
+}
+.pink{
+    background-color: palevioletred;
+    
+}
+.greenGlow{
+    background-color: greenyellow;
+    box-shadow: inset 0px 0px 1vmin 1vmin rgb(0, 57, 0);
+}
+.pinkGlow{
+    background-color: palevioletred;
+    box-shadow: inset 0px 0px 1vmin 1vmin rgb(117, 0, 96);
+    
+}
+.square.row0, .square.row14, .square.column0, .square.column21{
+    background-color: white;
+    outline: none;
+    z-index: -5;
+}
