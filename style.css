@@ -1,3 +1,4 @@
+
 body{
     padding: 0;
     margin: 0%;
@@ -7,19 +8,29 @@ body{
     justify-content: center;
     align-items: center;
     z-index: -20;
+    background:radial-gradient(circle, rgb(255, 255, 255) 60%, greenyellow 80%, palevioletred 95%) ;
 }
 
-.gameContainer{
+.screenBox{
     background-color: aqua;
     width: 100vmin;
     height: 100vmin;
-    z-index: -10;
+}
+
+.startContainer{
+    background-image: url(https://pbs.twimg.com/media/FYHu9o0XgAgGAIT?format=jpg&name=small);
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+.gameBoard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .square{
     width: 4vmin;

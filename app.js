@@ -110,3 +110,73 @@ document.addEventListener('keydown', (pressed) =>{
     }
     
 })
+
+const startGame = () =>{
+    let start = document.querySelector('.startContainer')
+    start.remove()
+    createGame()
+}
+
+const createGame = () =>{
+    // make game container
+    let body = document.body
+    let gameContainer = document.createElement('div')
+    gameContainer.classList.add('gameContainer', 'screenBox')
+    body.appendChild(gameContainer)
+    // set score areas and timer
+    scoreBoard('green')
+    gameTimer()
+    scoreBoard('pink')
+    // make game board
+    let gameBoard = document.createElement('div')
+    gameBoard.classList.add('gameBoard')
+    gameContainer.appendChild(gameBoard)
+
+
+    // set rows/columns in game board
+    for(i=0; i<15; i++){
+        let row = document.createElement('div')
+        row.classList.add('row', `row${i}`)
+        gameBoard.appendChild(row)
+        for(j=0; j<22; j++){
+            let column = document.createElement('div')
+            column.classList.add('square', `row${i}`, `column${j}`)
+            row.appendChild(column)
+        }
+    }
+    // starting positions
+    let greenstart = document.querySelector('.row7 .column1')
+    greenstart.classList.add('green', 'greenGlow')
+    let pinkstart = document.querySelector('.row7 .column20')
+    pinkstart.classList.add('pink', 'pinkGlow')
+}
+
+const scoreBoard = (color) =>{
+    let container = document.querySelector('.gameContainer')
+    let scoreBoard = document.createElement('div')
+    scoreBoard.classList.add('scoreBoard', `${color}Board`)
+    container.appendChild(scoreBoard)
+    
+    setInterval(function(){
+        let scoreBoard = document.querySelector(`.${color}Board`)
+        let squares = document.querySelectorAll(`.${color}`)
+        score = squares.length
+        scoreBoard.textContent = score
+        },10)
+}
+const gameTimer = () =>{
+    let container = document.querySelector('.gameContainer')
+    let timer = document.createElement('div')
+    timer.classList.add('gameTimer')
+    container.appendChild(timer)
+    let timeRemaining = 90
+    timer.textContent = `Time Remaining: ${timeRemaining}`
+    setInterval(function(){
+        let timer = document.querySelector('.gameTimer')
+        if(timeRemaining>0){
+
+            timeRemaining--
+            timer.textContent = `Time Remaining: ${timeRemaining}`
+        }
+    }, 1000)
+}
