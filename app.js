@@ -7,6 +7,13 @@ const player2 = {
     yPosition: 7
 }
 
+let gScoreInt = null;
+let pScoreInt = null;
+let timerInt = null;
+let greenEndScore;
+let pinkEndScore;
+
+const leaderBtn = document.querySelector('.leaderButton')
 
 document.addEventListener('keydown', (pressed) =>{
     if(pressed.key == 'd'){
@@ -22,7 +29,7 @@ document.addEventListener('keydown', (pressed) =>{
         }
     }
     if(pressed.key == 's'){
-        if(player1.yPosition < 13){
+        if(player1.yPosition < 14){
 
             let pretarget = document.querySelector(`.row${player1.yPosition}.column${player1.xPosition}`)
             pretarget.classList.remove('greenGlow')
@@ -34,7 +41,7 @@ document.addEventListener('keydown', (pressed) =>{
         }
     }
     if(pressed.key == 'w'){
-        if(player1.yPosition > 1){
+        if(player1.yPosition > 0){
 
             let pretarget = document.querySelector(`.row${player1.yPosition}.column${player1.xPosition}`)
             pretarget.classList.remove('greenGlow')
@@ -73,7 +80,7 @@ document.addEventListener('keydown', (pressed) =>{
         }
     }
     if(pressed.key == 'k'){
-        if(player2.yPosition < 13){
+        if(player2.yPosition < 14){
 
             let pretarget = document.querySelector(`.row${player2.yPosition}.column${player2.xPosition}`)
             pretarget.classList.remove('pinkGlow')
@@ -85,7 +92,7 @@ document.addEventListener('keydown', (pressed) =>{
         }
     }
     if(pressed.key == 'i'){
-        if(player2.yPosition > 1){
+        if(player2.yPosition > 0){
 
             let pretarget = document.querySelector(`.row${player2.yPosition}.column${player2.xPosition}`)
             pretarget.classList.remove('pinkGlow')
@@ -123,6 +130,10 @@ const createGame = () =>{
     let gameContainer = document.createElement('div')
     gameContainer.classList.add('gameContainer', 'screenBox')
     body.appendChild(gameContainer)
+    // make game HUD
+    let gameHUD = document.createElement('div')
+    gameHUD.classList.add('gameHUD')
+    gameContainer.appendChild(gameHUD)
     // set score areas and timer
     scoreBoard('green')
     gameTimer()
@@ -131,8 +142,16 @@ const createGame = () =>{
     let gameBoard = document.createElement('div')
     gameBoard.classList.add('gameBoard')
     gameContainer.appendChild(gameBoard)
-
-
+    // make quit button
+    
+    let quitButton = document.createElement('button')
+    quitButton.classList.add('quitButton')
+    quitButton.textContent = 'QUIT'
+    gameContainer.appendChild(quitButton)
+    let quitBtn = document.querySelector('.quitButton')
+    quitBtn.addEventListener('click', () =>{
+        quitGame()
+    })
     // set rows/columns in game board
     for(i=0; i<15; i++){
         let row = document.createElement('div')
@@ -149,34 +168,95 @@ const createGame = () =>{
     greenstart.classList.add('green', 'greenGlow')
     let pinkstart = document.querySelector('.row7 .column20')
     pinkstart.classList.add('pink', 'pinkGlow')
+    
+
 }
 
 const scoreBoard = (color) =>{
-    let container = document.querySelector('.gameContainer')
+    let container = document.querySelector('.gameHUD')
     let scoreBoard = document.createElement('div')
     scoreBoard.classList.add('scoreBoard', `${color}Board`)
     container.appendChild(scoreBoard)
     
-    setInterval(function(){
-        let scoreBoard = document.querySelector(`.${color}Board`)
-        let squares = document.querySelectorAll(`.${color}`)
-        score = squares.length
-        scoreBoard.textContent = score
-        },10)
+    if(color == 'green'){
+        gScoreInt = setInterval(() =>{
+            let scoreBoard = document.querySelector(`.greenBoard`)
+            let squares = document.querySelectorAll(`.green`)
+            score = squares.length
+            scoreBoard.textContent = `Score: ${score}`
+            },100)
+    }else if(color == 'pink'){
+        pScoreInt = setInterval(() =>{
+            let scoreBoard = document.querySelector(`.pinkBoard`)
+            let squares = document.querySelectorAll(`.pink`)
+            score = squares.length
+            
+            scoreBoard.textContent = `Score: ${score}`
+            },100)
+    }
 }
 const gameTimer = () =>{
-    let container = document.querySelector('.gameContainer')
+    let container = document.querySelector('.gameHUD')
     let timer = document.createElement('div')
     timer.classList.add('gameTimer')
     container.appendChild(timer)
     let timeRemaining = 90
     timer.textContent = `Time Remaining: ${timeRemaining}`
-    setInterval(function(){
+    timerInt = setInterval(() =>{
         let timer = document.querySelector('.gameTimer')
         if(timeRemaining>0){
-
             timeRemaining--
             timer.textContent = `Time Remaining: ${timeRemaining}`
         }
     }, 1000)
 }
+
+const quitGame = () =>{
+    resetBoard()
+    // erase game screen
+    let oldScreen = document.querySelector('.gameContainer')
+    oldScreen.remove()
+    let newScreen = document.createElement('div')
+    newScreen.classList.add('startContainer', 'screenBox')
+    document.body.appendChild(newScreen)
+    // logo
+    let logo = document.createElement('img')
+    logo.classList.add('logo')
+    logo.src = ('/images/norman-custom-title.png')
+    newScreen.appendChild(logo)
+    // start button
+
+    let button1 = document.createElement('button')
+    button1.classList.add('startButton')
+    button1.textContent = 'START'
+    newScreen.appendChild(button1)
+    let startBtn = document.querySelector('.startButton')
+    startBtn.addEventListener('click', () =>{
+        startGame()
+    })
+
+    // leaderboard button
+
+    let button2 = document.createElement('button')
+    button2.classList.add('leaderButton')
+    button2.textContent = 'LEADERBOARD'
+    newScreen.appendChild(button2)
+    // instructions
+    let button3 = document.createElement('button')
+    button3.classList.add('howtoButton')
+    button3.textContent = 'HOW TO PLAY'
+    newScreen.appendChild(button3)
+
+}
+
+const resetBoard = () =>{
+    clearInterval(gScoreInt)
+    clearInterval(pScoreInt)
+    clearInterval(timerInt)
+    player1.xPosition = 1
+    player1.yPosition = 7
+    player2.xPosition = 20
+    player2.yPosition = 7
+}
+
+
