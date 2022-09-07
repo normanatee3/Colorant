@@ -200,13 +200,29 @@ const gameTimer = () =>{
     let timer = document.createElement('div')
     timer.classList.add('gameTimer')
     container.appendChild(timer)
-    let timeRemaining = 90
+    let timeRemaining = 3
     timer.textContent = `Time Remaining: ${timeRemaining}`
     timerInt = setInterval(() =>{
         let timer = document.querySelector('.gameTimer')
         if(timeRemaining>0){
             timeRemaining--
             timer.textContent = `Time Remaining: ${timeRemaining}`
+        }else if(timeRemaining==0){
+            greenEndScore = document.querySelectorAll('.green').length
+            pinkEndScore = document.querySelectorAll('.pink').length
+            if(pinkEndScore > greenEndScore){
+                alert(`Pink has ${pinkEndScore} and Green has ${greenEndScore}. Pink wins!`)
+                quitGame()
+            }else if(pinkEndScore < greenEndScore){
+                alert(`Green has ${greenEndScore} and Pink has ${pinkEndScore}. Green wins!`) 
+                quitGame()
+            }else if(pinkEndScore = greenEndScore){
+                timeRemaining = 15
+                let timer = document.querySelector('.gameTimer')
+                timer.textContent = `OVERTIME!!! : ${timeRemaining}`
+                timer.style.color = 'red'
+            }
+            
         }
     }, 1000)
 }
@@ -241,6 +257,7 @@ const quitGame = () =>{
     button2.classList.add('leaderButton')
     button2.textContent = 'LEADERBOARD'
     newScreen.appendChild(button2)
+
     // instructions
     let button3 = document.createElement('button')
     button3.classList.add('howtoButton')
