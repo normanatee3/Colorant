@@ -11,7 +11,6 @@ body{
     background:radial-gradient(circle, rgb(255, 255, 255) 60%, greenyellow 80%, palevioletred 95%) ;
     overflow: hidden;
 }
-
 .screenBox{
     background-color: aqua;
     width: 100vmin;
@@ -29,8 +28,7 @@ body{
 
     
 }
-
-.startButton{
+.startButton, .howtoButton, .quitButton{
     width: 90%;
     height: 10%;
     margin: 5vmin;
@@ -44,6 +42,7 @@ body{
     color: white;
     text-shadow: .3vmin .3vmin 1.2vmin black;
     opacity: .8;
+    transition:all 250ms;
 }
 .leaderButton{
     width: 90%;
@@ -58,13 +57,17 @@ body{
     color: white;
     text-shadow: .3vmin .3vmin 1.2vmin black;
     opacity: .8;
-    
+    transition:all 250ms;
+
 }
-.howtoButton{
-    width: 90%;
+.menuButton{
+    margin-top: 10vmin;
+    margin-left: 20vmin;
+}
+.menuButton2, .menuButton{
+    width: 60vmin;
     height: 10%;
-    margin: 5vmin;
-    background: rgba(172, 255, 47, 0.8);
+    background: rgba(216, 112, 147, 0.8);
     border: none;
     border-radius: 1vmin;
     outline: solid black 1.7vmin;
@@ -73,66 +76,37 @@ body{
     color: white;
     text-shadow: .3vmin .3vmin 1.2vmin black;
     opacity: .8;
+    transition:all 250ms;
 
 }
-.quitButton{
-    width: 100%;
-    height: 10%;
-    margin-top: 3vmin;
-    background: rgba(172, 255, 47, 0.8);
-    border: none;
-    border-radius: 1vmin;
-    border: solid black 1.7vmin;
-    font-size: 3vmin;
-    /* font-weight: 900; */
-    color: white;
-    text-shadow: .3vmin .3vmin 1.2vmin black;
-    opacity: .8;
+.startButton:hover, .howtoButton:hover, .quitButton:hover{
+    background: rgba(172, 255, 47, 1);
+    opacity: 1;
+    transform: translateY(-1vmin) scale(1.05) rotate(-2deg);
+}
+.leaderButton:hover, .menuButton:hover, .menuButton2:hover{
+    background: rgba(216, 112, 147, 1);
+    opacity: 1;
+    transform: translateY(-1vmin) scale(1.05) rotate(2deg);
 
 }
-.startButton:hover{
+.startButton:active, .howtoButton:active, .quitButton:active{
+    background: rgba(216, 112, 147, 1);
+    transform: translateY(1vmin) scale(1.05) rotate(-2deg);
+    opacity: 1;
+}
+.leaderButton:active, .menuButton:active, .menuButton2:active{
     background: rgba(172, 255, 47, 1);
     opacity: 1;
-}
-.leaderButton:hover{
-    background: rgba(216, 112, 147, 1);
-    opacity: 1;
-    
-}
-.howtoButton:hover{
-    background: rgba(172, 255, 47, 1);
-    opacity: 1;
-}
-.quitButton:hover{
-    background: rgba(172, 255, 47, 1);
-    opacity: 1;
-}
-.startButton:active{
-    background: rgba(216, 112, 147, 1);
-
-    opacity: 1;
-}
-.leaderButton:active{
-    background: rgba(172, 255, 47, 1);
-    opacity: 1;
-    
-}
-.howtoButton:active{
-    background: rgba(216, 112, 147, 1);
-    opacity: 1;
-}
-.quitButton:active{
-    background: rgba(216, 112, 147, 1);
-
-    opacity: 1;
+    transform: translateY(1vmin) scale(1.05) rotate(2deg);
 }
 .logo{
     position: relative;
-    width: 60vmin;
-    top: 0vmin;
+    width: 55vmin;
+    top: 1vmin;
 }
 .gameContainer{
-    background-image: url(https://www.nme.com/wp-content/uploads/2022/05/Splatoon-3-campaign-screenshot-696x442.jpg);
+    background-image: url(https://i.pinimg.com/236x/e9/94/c6/e994c6590476e47239780b628a1a84a1.jpg);
     background-size: cover ;
 }
 .greenBoard{
@@ -152,7 +126,7 @@ body{
     box-shadow: 0px 0px 2vmin 2vmin palevioletred;
 }
 .startContainer{
-    background-image: url(https://pbs.twimg.com/media/FYHu9o0XgAgGAIT?format=jpg&name=small);
+    background-image: url(https://i.pinimg.com/170x/f6/38/76/f63876ea847daa64892a14806188d1fd.jpg);
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -167,6 +141,23 @@ body{
     background-image: url(https://opengameart.org/sites/default/files/background-1_0.png);
     background-position: center;
     background-size: 117%;
+    outline: black solid .3vmin;
+}
+.endBoard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    position: relative;
+    left: 10vmin;
+    width: 80vmin;
+    height: 60vmin;
+    margin-top: 10vmin;
+    text-align: center;
+    font-size: 4vmin;
+    border-radius: 1vmin;
 }
 
 .square{
@@ -187,15 +178,152 @@ body{
 }
 .greenGlow{
     background-color: greenyellow;
-    box-shadow: inset 0px 0px 1vmin 1vmin rgb(0, 57, 0);
+    box-shadow: inset 0px 0px .5vmin .5vmin rgba(0, 57, 0, 0.475);
 }
 .pinkGlow{
     background-color: palevioletred;
-    box-shadow: inset 0px 0px 1vmin 1vmin rgb(117, 0, 96);
+    box-shadow: inset 0px 0px .5vmin .5vmin rgba(117, 0, 96, 0.475);
     
 }
 .square.column0, .square.column21{
     background-color: white;
     outline: none;
     z-index: -5;
+}
+.leaderBoard{
+    width: 80vmin;
+    height: 80vmin;
+    background-color: rgba(0, 0, 0, 0.725);
+    border-radius: 1vmin;
+
+    position: relative;
+    top: -2vmin;
+    margin-bottom: 2vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.howtoBoard{
+    width: 80vmin;
+    height: 80vmin;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 1vmin;
+    position: relative;
+    top: -2vmin;
+    margin-bottom: 2vmin;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding: 1.5vmin;
+}
+.headline{
+    width: 95%;
+    height: 10%;
+    /* background-color: black; */
+    border-radius: 1vmin;
+    color: white;
+    font-size: 7vmin;
+    text-align: center;
+    font-weight: 900;
+    margin: 2vmin;
+    text-shadow: .6vmin .6vmin 1.5vmin palevioletred,
+    -.6vmin -.6vmin 1.5vmin greenyellow;
+
+}
+.card{
+    width: 90%;
+    height: 5.5%;
+    background-color: black;
+    margin: 1.1vmin;
+    border-radius: 1vmin;
+    display:flex;
+    justify-content: space-between;
+    padding-left: 1vmin;
+    padding-right: 1vmin;
+}
+.menuText{
+    font-size: 3vmin;
+    font-family: sans-serif;
+    /* margin: .4vmin; */
+    font-weight: 900;
+    color: white;
+    text-shadow: .2vmin .2vmin 1.2vmin black;
+}
+.menu2Text{
+    font-size: 1.5vmin;
+    font-family: sans-serif;
+    /* margin: .4vmin; */
+    font-weight: 900;
+    color: white;
+    text-shadow: .2vmin .2vmin 1.2vmin black;
+    text-align: center;
+}
+
+.glw{
+    background-image: url(https://i.ibb.co/hcLt0Nc/tile005.png);
+    background-size: cover;
+}
+.gls{
+    background-image: url(https://i.ibb.co/Yd3JyyS/tile004.png);
+    background-size: cover;
+}
+.grw{
+    background-image: url(https://i.ibb.co/GJJ8wGg/tile006.png);
+    background-size: cover;
+}
+.grs{
+    background-image: url(https://i.ibb.co/hY0d1zv/tile007.png);
+    background-size: cover;
+}
+.guw{
+    background-image: url(https://i.ibb.co/wYQzWyk/tile009.png);
+    background-size: cover;
+}
+.gus{
+    background-image: url(https://i.ibb.co/FmtvNzX/tile010.png);
+    background-size: cover;
+}
+.gdw{
+    background-image: url(https://i.ibb.co/NVhcxZ0/tile002.png);
+    background-size: cover;
+}
+.gds{
+    background-image: url(https://i.ibb.co/1qHqBJH/tile001.png);
+    background-size: cover;
+}
+.plw{
+    background-image: url(https://i.ibb.co/yNhtHn4/tile005.png);
+    background-size: cover;
+}
+.pls{
+    background-image: url(https://i.ibb.co/Yh3gn7m/tile004.png);
+    background-size: cover;
+}
+.prw{
+    background-image: url(https://i.ibb.co/NN3yryQ/tile006.png);
+    background-size: cover;
+}
+.prs{
+    background-image: url(https://i.ibb.co/W2WWy2g/tile007.png);
+    background-size: cover;
+}
+.puw{
+    background-image: url(https://i.ibb.co/gVztPZ5/tile009.png);
+    background-size: cover;
+}
+.pus{
+    background-image: url(https://i.ibb.co/166MMHY/tile010.png);
+    background-size: cover;
+}
+.pdw{
+    background-image: url(https://i.ibb.co/JBGnd9P/tile002.png);
+    background-size: cover;
+}
+.pds{
+    background-image: url(https://i.ibb.co/dPBShKh/tile001.png);
+    background-size: cover;
+}
+
+.sprayCan{
+    background-image: url(https://c.tenor.com/9TAGJVdhJScAAAAM/kstr-kochstrasse.gif);
+    background-size: cover;
 }
