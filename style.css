@@ -101,9 +101,13 @@ body{
     transform: translateY(1vmin) scale(1.05) rotate(2deg);
 }
 .logo{
+    
     position: relative;
-    width: 55vmin;
+    width: 75vmin;
     top: 1vmin;
+    
+    margin-bottom: 10vmin;
+    z-index: 5;
 }
 .gameContainer{
     background-image: url(https://i.pinimg.com/236x/e9/94/c6/e994c6590476e47239780b628a1a84a1.jpg);

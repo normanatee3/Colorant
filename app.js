@@ -321,8 +321,8 @@ const mainMenu = () =>{
     document.body.appendChild(newScreen)
     // logo
     let logo = document.createElement('img')
-    logo.classList.add('logo')
-    logo.src = ('https://i.ibb.co/LJz6JwV/unnamed.png')
+    logo.classList.add('logo', 'animate__animated', 'animate__jackInTheBox')
+    logo.src = ('https://i.ibb.co/G5cwWYD/Untitled-Artwork.png')
     newScreen.appendChild(logo)
     // start button
 
@@ -332,7 +332,13 @@ const mainMenu = () =>{
     newScreen.appendChild(button1)
     let startBtn = document.querySelector('.startButton')
     startBtn.addEventListener('click', () =>{
-        startGame()
+        logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+        logo.classList.add('animate__animated','animate__hinge')
+        setTimeout(function(){
+            startGame()
+        },2000)
+    
+    
     })
 
     // leaderboard button
@@ -343,7 +349,11 @@ const mainMenu = () =>{
     newScreen.appendChild(button2)
     let leaderBtn = document.querySelector('.leaderButton')
     leaderBtn.addEventListener('click', () =>{
-        leaderMenu()
+        logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+        logo.classList.add('animate__animated','animate__hinge')
+        setTimeout(function(){
+            leaderMenu()
+        },2000)
     })
 
     // instructions
@@ -353,7 +363,11 @@ const mainMenu = () =>{
     newScreen.appendChild(button3)
     let howtoBtn = document.querySelector('.howtoButton')
     howtoBtn.addEventListener('click', () =>{
-        howToMenu()
+        logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+        logo.classList.add('animate__animated','animate__hinge')
+        setTimeout(function(){
+            howToMenu()
+        },2000)
     })
 }
 const endGameMenu = () =>{
@@ -548,5 +562,28 @@ const sprayCan = () =>{
     },10)
 }
 
-
+const delayStart = () =>{
+    let logo = document.querySelector('.logo')
+    logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+    logo.classList.add('animate__animated','animate__hinge')
+    setTimeout(function(){
+        startGame()
+    },2000)
+}
+const delayLeader = () =>{
+    let logo = document.querySelector('.logo')
+    logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+    logo.classList.add('animate__animated','animate__hinge')
+    setTimeout(function(){
+        leaderMenu()
+    },2000)
+}
+const delayHowTo = () =>{
+    let logo = document.querySelector('.logo')
+    logo.classList.remove('animate__animated', 'animate__jackInTheBox')
+    logo.classList.add('animate__animated','animate__hinge')
+    setTimeout(function(){
+        howToMenu()
+    },2000)
+}
 
