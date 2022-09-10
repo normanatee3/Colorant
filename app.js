@@ -12,12 +12,19 @@ const can = {
     xPosition: 0,
     yPosition: 0
 }
+const arrow = {
+    xPosition: 0,
+    yPosition: 0
+}
 let pinkEndScore=0;
 let gScoreInt = null;
 let pScoreInt = null;
 let timerInt = null;
 let sprayInt = null;
 let canInt = null;
+let arrowInt = null
+let wipeInt = null
+let bowInt = null
 let greenEndScore=0;
 
 let highScores = [
@@ -205,6 +212,7 @@ const createGame = () =>{
     scoreBoard('green')
     gameTimer()
     sprayCan()
+    arrowPower()
     scoreBoard('pink')
     // make game board
     let gameBoard = document.createElement('div')
@@ -310,6 +318,9 @@ const resetBoard = () =>{
     clearInterval(timerInt)
     clearInterval(sprayInt)
     clearInterval(canInt)
+    clearInterval(arrowInt)
+    clearInterval(wipeInt)
+    clearInterval(bowInt)
     player1.xPosition = 1
     player1.yPosition = 7
     player2.xPosition = 20
@@ -483,7 +494,9 @@ const howToMenu = () =>{
     UP --- Arrow Up
     LEFT --- Arrow Left
     DOWN --- Arrow Down
-    RIGHT --- Arrow Right`
+    RIGHT --- Arrow Right
+    
+    Keep an eye out for power-ups ;)`
 
 
 
@@ -519,6 +532,8 @@ pinkSort()
 
 
 const sprayCan = () =>{
+    clearInterval(sprayInt)
+    clearInterval(canInt)
     sprayInt = setInterval(()=>{
         let oldCanLocation = document.querySelector(`.row${can.yPosition}.column${can.xPosition}`)
         oldCanLocation.classList.remove('sprayCan')
@@ -526,14 +541,14 @@ const sprayCan = () =>{
         can.yPosition = Math.floor(Math.random()*15)
         let newCanLocation = document.querySelector(`.row${can.yPosition}.column${can.xPosition}`)
         newCanLocation.classList.add('sprayCan')
-        
+        sprayCan()
     },5000)
 
     canInt = setInterval(()=>{
         if(player1.xPosition == can.xPosition && player1.yPosition == can.yPosition){
             let canLocation = document.querySelector(`.row${can.yPosition}.column${can.xPosition}`)
             canLocation.classList.remove('sprayCan')
-
+            sprayCan()
             for(i = -2; i < 3; i++){
                 for(j = -2; j < 3; j++){
                     let target = document.querySelector(`.row${can.yPosition+i}.column${can.xPosition+j}`)
@@ -547,7 +562,7 @@ const sprayCan = () =>{
         }else if(player2.xPosition == can.xPosition && player2.yPosition == can.yPosition){
             let canLocation = document.querySelector(`.row${can.yPosition}.column${can.xPosition}`)
             canLocation.classList.remove('sprayCan')
-
+            sprayCan()
             for(i = -2; i < 3; i++){
                 for(j = -2; j < 3; j++){
                     let target = document.querySelector(`.row${can.yPosition+i}.column${can.xPosition+j}`)
@@ -559,7 +574,60 @@ const sprayCan = () =>{
             }
 
         }
-    },10)
+    },50)
+}
+const arrowPower = () =>{
+    clearInterval(arrowInt)
+    clearInterval(bowInt)
+    arrowInt = setInterval(()=>{
+        clearInterval(wipeInt)
+        arrow.xPosition = Math.floor(Math.random()*20)+1
+        arrow.yPosition = Math.floor(Math.random()*15)
+        let newarrowLocation = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition}`)
+        newarrowLocation.classList.add('arrow')
+        
+        wipeInt = setInterval(()=>{
+            let oldarrowLocation = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition}`)
+            oldarrowLocation.classList.remove('arrow')
+            clearInterval(bowInt)
+            arrowPower()
+        },5000)
+
+    },11000)
+
+    bowInt = setInterval(()=>{
+        if(player1.xPosition == arrow.xPosition && player1.yPosition == arrow.yPosition){
+            let arrowLocation = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition}`)
+            arrowLocation.classList.remove('arrow')
+            clearInterval(wipeInt)
+            arrowPower()
+            for(i = -21; i < 42; i++){
+                
+                let target = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition+i}`)
+                if(target){
+                    target.classList.add('green')
+                    target.classList.remove('pink')
+                }
+                
+            }
+
+        }else if(player2.xPosition == arrow.xPosition && player2.yPosition == arrow.yPosition){
+            let arrowLocation = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition}`)
+            arrowLocation.classList.remove('arrow')
+            clearInterval(wipeInt)
+            arrowPower()
+            for(i = -21; i < 42; i++){
+                
+                let target = document.querySelector(`.row${arrow.yPosition}.column${arrow.xPosition+i}`)
+                if(target){
+                    target.classList.add('pink')
+                    target.classList.add('green')
+                }
+                
+            }
+
+        }
+    },50)
 }
 
 const delayStart = () =>{
