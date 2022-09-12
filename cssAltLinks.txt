@@ -1,0 +1,64 @@
+.glw{
+    background-image: url(https://i.ibb.co/hcLt0Nc/tile005.png);
+    background-size: cover;
+}
+.gls{
+    background-image: url(https://i.ibb.co/Yd3JyyS/tile004.png);
+    background-size: cover;
+}
+.grw{
+    background-image: url(https://i.ibb.co/GJJ8wGg/tile006.png);
+    background-size: cover;
+}
+.grs{
+    background-image: url(https://i.ibb.co/hY0d1zv/tile007.png);
+    background-size: cover;
+}
+.guw{
+    background-image: url(https://i.ibb.co/wYQzWyk/tile009.png);
+    background-size: cover;
+}
+.gus{
+    background-image: url(https://i.ibb.co/FmtvNzX/tile010.png);
+    background-size: cover;
+}
+.gdw{
+    background-image: url(https://i.ibb.co/NVhcxZ0/tile002.png);
+    background-size: cover;
+}
+.gds{
+    background-image: url(https://i.ibb.co/1qHqBJH/tile001.png);
+    background-size: cover;
+}
+.plw{
+    background-image: url(https://i.ibb.co/yNhtHn4/tile005.png);
+    background-size: cover;
+}
+.pls{
+    background-image: url(https://i.ibb.co/Yh3gn7m/tile004.png);
+    background-size: cover;
+}
+.prw{
+    background-image: url(https://i.ibb.co/NN3yryQ/tile006.png);
+    background-size: cover;
+}
+.prs{
+    background-image: url(https://i.ibb.co/W2WWy2g/tile007.png);
+    background-size: cover;
+}
+.puw{
+    background-image: url(https://i.ibb.co/gVztPZ5/tile009.png);
+    background-size: cover;
+}
+.pus{
+    background-image: url(https://i.ibb.co/166MMHY/tile010.png);
+    background-size: cover;
+}
+.pdw{
+    background-image: url(https://i.ibb.co/JBGnd9P/tile002.png);
+    background-size: cover;
+}
+.pds{
+    background-image: url(https://i.ibb.co/dPBShKh/tile001.png);
+    background-size: cover;
+}

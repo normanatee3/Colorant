@@ -11,6 +11,8 @@
     
     Keep battling until somebody wins!
     
+    Watch out for powerups!
+
     CONTROLS: 
 
     Player 1:
@@ -26,3 +28,5 @@
     LEFT --- Arrow Left
     DOWN --- Arrow Down
     RIGHT --- Arrow Right
+
+    
