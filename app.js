@@ -276,7 +276,7 @@ const gameTimer = () =>{
     let timer = document.createElement('div')
     timer.classList.add('gameTimer')
     container.appendChild(timer)
-    let timeRemaining = 45
+    let timeRemaining = 60
     timer.textContent = `Time Remaining: ${timeRemaining}`
     timerInt = setInterval(() =>{
         let timer = document.querySelector('.gameTimer')
