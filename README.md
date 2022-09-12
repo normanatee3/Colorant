@@ -16,7 +16,7 @@ Colorant - A game where your goal is to dominate the field. Run around the board
 -[Animate.css](https://animate.style/)
 
 ## Features
--Persistent local Leaderboard
+-Persistent local Leaderboard<br>
 -Custom Logo
 -Power-up Mechanics
 -2 Players
