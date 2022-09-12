@@ -1,6 +1,6 @@
 ## Project title
 
-Colorant - A game where your goal is to dominate the field. Run around the board and leave paint in your trail. Paint over your enemy if you must.
+Colorant - A game where your goal is to dominate the field. <br>Run around the board and leave paint in your trail. <br>Paint over your enemy if you must.
 
 
 ## Screenshots
@@ -12,13 +12,13 @@ Colorant - A game where your goal is to dominate the field. Run around the board
 
 <b>Built with</b>
 - Javascript
-- HTML/CSS
+- HTML/CSS<br>
 -[Animate.css](https://animate.style/)
 
 ## Features
 -Persistent local Leaderboard<br>
--Custom Logo
--Power-up Mechanics
+-Custom Logo<br>
+-Power-up Mechanics<br>
 -2 Players
 
 
@@ -29,7 +29,7 @@ Colorant - A game where your goal is to dominate the field. Run around the board
 
 ## How to use?
 
-At the Main Menu, press  -START-  to initiate the game.
+    At the Main Menu, press  -START-  to initiate the game.
     
     Player 1  -Green-  enters their Name, then Player 2  -Pink- .
     
@@ -62,7 +62,7 @@ At the Main Menu, press  -START-  to initiate the game.
 
 ## Credits
 
-Logo animation by -[Animate.css](https://animate.style/)
-Character Design by -[RPGMakerMV](https://www.rpgmakerweb.com/products/rpg-maker-mv)
-
-Logo Design and Game Design by: Norman K. Taylor
+Logo animation by -[Animate.css](https://animate.style/)<br>
+Character Design by -[RPGMakerMV](https://www.rpgmakerweb.com/products/rpg-maker-mv)<br>
+Logo Design by: Norman K. Taylor<br>
+Game Design by: Norman K. Taylor
